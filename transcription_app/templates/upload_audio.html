@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Audio</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #007bff, #0056b3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden; /* Prevents scrollbars */
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeIn 1s;
+        }
+
+        /* Styling for input elements */
+        input[type="file"] {
+            margin: 10px auto;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            background: transparent;
+            color: #fff;
+            animation: slideIn 1s;
+        }
+
+        /* Styling for the Upload button */
+        button[type="submit"] {
+            background: linear-gradient(to bottom, #fff, #ccc);
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideIn 1s;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(to bottom, #ccc, #fff);
+            transform: translateY(-2px);
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation keyframes */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Loading animation */
+        .loading-icon {
+            font-size: 48px;
+            color: #fff;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload an Audio File</h1>
+    <!-- Loading icon (spinning gear) -->
+    <div class="loading-icon">&#9881;</div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Input element with improved styling -->
+        <input type="file" name="audio_file" required>
+
+        <!-- Upload button with improved styling -->
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
